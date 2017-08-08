@@ -1,5 +1,5 @@
 
-#MySQL
+MySQL
 
 	$ cd /Users/yueli/DockerCompose 
 	$ docker run -p 3305:3305 --name test2_mysql -v$PWD/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d --privileged=true mysql:5.6
@@ -11,7 +11,7 @@
 mysql> show databases;
 
 | Database           |
---------------------+
+--------------------+ 
 | information_schema |
 | mysql              |
 | performance_schema |
@@ -63,14 +63,13 @@ mysql> show databases;
 #compose
 
 
+CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS                     PORTS                              NAMES
+12947c62d05b        dockercompose_nginx    "nginx -g 'daemon ..."   5 minutes ago       Up 5 minutes               80/tcp, 0.0.0.0:81->81/tcp         dockercompose_nginx_1
+5ce2b9c04992        dockercompose_phpfpm   "docker-php-entryp..."   5 minutes ago       Up 5 minutes               9000/tcp, 0.0.0.0:9001->9001/tcp   dockercompose_phpfpm_1
+37107b7be7f9        dockercompose_mysql    "docker-entrypoint..."   5 minutes ago       Exited (1) 4 minutes ago                                      dockercompose_mysql_1
+c4f1fd40eeab        nginx                  "nginx -g 'daemon ..."   42 hours ago        Up 42 hours                0.0.0.0:80->80/tcp                 nginx-php
+69457451e81f        php-fpm5.6/v2          "docker-php-entryp..."   42 hours ago        Up 42 hours                0.0.0.0:9000->9000/tcp             php-with-mysql
+f91b190e2921        mysql:5.6              "docker-entrypoint..."   42 hours ago        Up 42 hours                0.0.0.0:3306->3306/tcp             test_mysql
+yue:DockerCompose yueli$ 
 
-	ERROR: for mysql  Cannot start service mysql: b'driver failed programming external connectivity on endpoint dockercompose_mysql_1 (7eb8d2d376ec8966ff00e59f2a786501f16a7393071bdf7a5ee643c89a0391fa): Bind for 0.0.0.0:3306 failed: port is already allocated'
-	ERROR: Encountered errors while bringing up the project.
-	yue:DockerCompose yueli$ docker ps -a
-CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS              PORTS                    NAMES
-7e612f2263c1        dockercompose_mysql   "docker-entrypoint..."   2 minutes ago       Created                                      dockercompose_mysql_1
-c4f1fd40eeab        nginx                 "nginx -g 'daemon ..."   16 minutes ago      Up 16 minutes       0.0.0.0:80->80/tcp       nginx-php
-69457451e81f        php-fpm5.6/v2         "docker-php-entryp..."   26 minutes ago      Up 26 minutes       0.0.0.0:9000->9000/tcp   php-with-mysql
-f91b190e2921        mysql:5.6             "docker-entrypoint..."   39 minutes ago      Up 39 minutes       0.0.0.0:3306->3306/tcp   test_mysql
-yue:DockerCompose yueli$ tree DockerCompose
 

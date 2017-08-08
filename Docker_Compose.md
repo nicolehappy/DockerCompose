@@ -36,11 +36,12 @@ mysql> show databases;
 
 
 
-#PHP with MySQL
-###Create a Dockerfile
+PHP with MySQL
+
+Create a Dockerfile
 
 
-####进入容器
+进入容器
 	$ cd /Users/yueli/DockerCompose/phpfpm 
 	$ docker build -t="php-fpm5.6/v2" .
 	$ docker run -d -p 9000:9000 -v /Users/yueli/DockerCompose/code/:/var/www/html/ --name php-with-mysql --link test_mysql:mysql  --volumes-from test_mysql --privileged=true php-fpm5.6/v2
@@ -60,7 +61,7 @@ mysql> show databases;
 
 
 
-#compose
+compose
 
 
 CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS                     PORTS                              NAMES

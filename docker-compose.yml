@@ -1,0 +1,25 @@
+nginx:
+  build: ./nginx
+  ports:
+    - "80:80"
+  links:
+    - "phpfpm"
+  volumes:
+    - /Users/yueli/DockerCompose/code/:/var/www/html/
+    - /Users/yueli/DockerCompose/nginx/conf/default
+phpfpm:
+  build: ./phpfpm
+  ports:
+    - "9000:9000"
+  volumes:
+    - ./code/:/var/www/html/
+  links:
+    - "mysql"
+mysql:
+  build: ./mysql
+  ports:
+    - "3306:3306"
+  volumes:
+    - /Users/yueli/DockerCompose/mysql/data/:/var/lib/mysql/
+  environment:
+    MYSQL_ROOT_PASSWORD : 123456
